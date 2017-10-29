@@ -1,0 +1,23 @@
+#calendar
+
+#eventModal.modal.fade{:role => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"data-dismiss" => "modal", :type => "button"} x
+        %h4.modal-title Create Appointment
+      .modal-body
+        = form_tag appointments_path, method: 'post', class: 'form-horizontal' do
+          .form-group
+            = label_tag :title, "Title", class: 'control-label col-sm-2'
+            .col-sm-10
+              = text_field_tag :title, '',class: 'form-control'
+              = hidden_field_tag :start_at
+              = hidden_field_tag :end_at
+
+          .form-group
+            = label_tag :when, "When:", class: 'control-label col-sm-2'
+            #when.col-sm-10{:style => "margin-top:5px;"}
+          .form-group
+            .col-sm-offset-2.col-sm-10
+              = submit_tag 'Save'
