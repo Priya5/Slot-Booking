@@ -1,18 +1,23 @@
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  username: root
-  password: mysql
-  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
   database: slot_booking_development
 
+  username: pguser
+  password: pgpwd
+  port: 5432
+  host: localhost
 test:
   <<: *default
   database: slot_booking_test
+  username: pguser
+  password: pgpwd
+  port: 5432
+  host: localhost
 
 production:
   <<: *default
